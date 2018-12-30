@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ThrustCurveBrowser"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <DataGrid
+            x:Name="dataGrid"
+            Margin="0"/>
 </Window>
