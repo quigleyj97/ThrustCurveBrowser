@@ -28,6 +28,18 @@ namespace ThrustCurveBrowser
             });
             Console.WriteLine("Loaded");
             InitializeComponent();
+            ApiService.TestConnection()
+                .ContinueWith((res) =>
+                {
+                    if (res.Result)
+                    {
+                        Console.WriteLine("Connected!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Failed to connect!");
+                    }
+                });
             dataGrid.ItemsSource = RocketTable;
             Console.WriteLine(dataGrid.ItemsSource);
         }
