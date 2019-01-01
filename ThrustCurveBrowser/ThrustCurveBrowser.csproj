@@ -69,6 +69,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Interfaces\download-request.cs" />
+    <Compile Include="Interfaces\download-response.cs" />
+    <Compile Include="Interfaces\metadata-request.cs" />
+    <Compile Include="Interfaces\metadata-response.cs" />
+    <Compile Include="Interfaces\search-request.cs" />
+    <Compile Include="Interfaces\search-response.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -95,6 +101,27 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Schema\download-request.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Schema\download-response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Schema\metadata-request.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Schema\metadata-response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Schema\MotorSearchService.wsdl">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Schema\search-request.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Schema\search-response.xsd">
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>

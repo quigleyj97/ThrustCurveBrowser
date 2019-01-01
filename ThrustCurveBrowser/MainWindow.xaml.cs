@@ -40,6 +40,14 @@ namespace ThrustCurveBrowser
                         Console.WriteLine("Failed to connect!");
                     }
                 });
+            ApiService.SearchMotors(new Models.searchrequest { manufacturer = "Cesaroni Technology", diameter = 29 })
+                .ContinueWith(res =>
+                {
+                    return Dispatcher.InvokeAsync(() =>
+                    {
+                        dataGrid.ItemsSource = res.Result;
+                    });
+                });
             dataGrid.ItemsSource = RocketTable;
             Console.WriteLine(dataGrid.ItemsSource);
         }
