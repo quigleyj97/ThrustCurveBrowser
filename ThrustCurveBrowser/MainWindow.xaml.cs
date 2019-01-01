@@ -28,7 +28,8 @@ namespace ThrustCurveBrowser
             });
             Console.WriteLine("Loaded");
             InitializeComponent();
-            ApiService.TestConnection()
+            ApiService srv = new ApiService();
+            srv.TestConnection()
                 .ContinueWith((res) =>
                 {
                     if (res.Result)
@@ -40,7 +41,7 @@ namespace ThrustCurveBrowser
                         Console.WriteLine("Failed to connect!");
                     }
                 });
-            ApiService.SearchMotors(new Models.searchrequest { manufacturer = "Cesaroni Technology", diameter = 29 })
+            srv.SearchMotors(new Models.searchrequest { manufacturer = "Cesaroni Technology", diameter = 29 })
                 .ContinueWith(res =>
                 {
                     return Dispatcher.InvokeAsync(() =>
@@ -49,7 +50,6 @@ namespace ThrustCurveBrowser
                     });
                 });
             dataGrid.ItemsSource = RocketTable;
-            Console.WriteLine(dataGrid.ItemsSource);
         }
     }
 
