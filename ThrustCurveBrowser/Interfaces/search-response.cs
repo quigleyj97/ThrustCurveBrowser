@@ -20,8 +20,8 @@ namespace ThrustCurveBrowser.Models {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.thrustcurve.org/2011/SearchResponse")]
-    [System.Xml.Serialization.XmlRootAttribute("search-response", Namespace="http://www.thrustcurve.org/2011/SearchResponse", IsNullable=false)]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.thrustcurve.org/2015/SearchResponse")]
+    [System.Xml.Serialization.XmlRootAttribute("search-response", Namespace="http://www.thrustcurve.org/2015/SearchResponse", IsNullable=false)]
     public partial class searchresponse {
         
         private searchresponseCriteria criteriaField;
@@ -67,7 +67,7 @@ namespace ThrustCurveBrowser.Models {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.thrustcurve.org/2011/SearchResponse")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.thrustcurve.org/2015/SearchResponse")]
     public partial class searchresponseCriteria {
         
         private searchresponseCriteriaCriterion[] criterionField;
@@ -102,7 +102,7 @@ namespace ThrustCurveBrowser.Models {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.thrustcurve.org/2011/SearchResponse")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.thrustcurve.org/2015/SearchResponse")]
     public partial class searchresponseCriteriaCriterion {
         
         private string nameField;
@@ -160,7 +160,7 @@ namespace ThrustCurveBrowser.Models {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.thrustcurve.org/2011/SearchResponse")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.thrustcurve.org/2015/SearchResponse")]
     public partial class searchresponseResult {
         
         private string motoridField;
