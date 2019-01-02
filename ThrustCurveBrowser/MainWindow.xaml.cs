@@ -13,23 +13,13 @@ namespace ThrustCurveBrowser
     /// </summary>
     public partial class MainWindow : Window
     {
-        public List<MotorDetail> RocketTable = new List<MotorDetail>();
+        private readonly ApiService apiService;
+
         public MainWindow()
         {
-            RocketTable.Add(new MotorDetail
-            {
-                Foo = "hello",
-                Bar = "world"
-            });
-            RocketTable.Add(new MotorDetail
-            {
-                Foo = "test",
-                Bar = "test"
-            });
-            Console.WriteLine("Loaded");
             InitializeComponent();
-            ApiService srv = new ApiService();
-            srv.TestConnection()
+            apiService = new ApiService();
+            apiService.TestConnection()
                 .ContinueWith((res) =>
                 {
                     if (res.Result)
@@ -38,10 +28,15 @@ namespace ThrustCurveBrowser
                     }
                     else
                     {
-                        Console.WriteLine("Failed to connect!");
+                        Dispatcher.InvokeAsync(() =>
+                        {
+                            const string msg = "Failed to connect to ThrustCurve, check your internet connection";
+                            MessageBox.Show(this, msg, "Connection Error");
+                            Close();
+                        });
                     }
                 });
-            srv.SearchMotors(new Models.searchrequest { manufacturer = "Cesaroni Technology", diameter = 29 })
+            apiService.SearchMotors(new Models.searchrequest { manufacturer = "Cesaroni Technology", diameter = 29 })
                 .ContinueWith(res =>
                 {
                     return Dispatcher.InvokeAsync(() =>
@@ -49,7 +44,6 @@ namespace ThrustCurveBrowser
                         dataGrid.ItemsSource = res.Result;
                     });
                 });
-            dataGrid.ItemsSource = RocketTable;
         }
     }
 
