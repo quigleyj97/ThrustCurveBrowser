@@ -39,20 +39,35 @@ namespace ThrustCurveBrowser
 
         public async Task<searchresponseResult[]> SearchMotors(searchrequest criteria)
         {
+            return (await MakeApiRequest<searchrequest, searchresponse>(criteria, SearchEndpoint)).results;
+        }
+
+        public async Task<downloadresponseResult[]> SearchDownloads(downloadrequest criteria)
+        {
+            return (await MakeApiRequest<downloadrequest, downloadresponse>(criteria, DownloadEndpoint)).results;
+        }
+
+        public Task<metadataresponse> GetSearchMetadata(metadatarequest criteria)
+        {
+            return MakeApiRequest<metadatarequest, metadataresponse>(criteria, MetadataEndpoint);
+        }
+
+        private async Task<U> MakeApiRequest<T, U>(T requestModel, string endpoint) where U : class, new()
+        {
             HttpResponseMessage response;
             try
             {
-                response = await client.PostAsync(SearchEndpoint, BodyForRequest(criteria));
+                response = await client.PostAsync(endpoint, BodyForRequest(requestModel));
                 response.EnsureSuccessStatusCode();
             }
             catch (HttpRequestException err)
             {
-                Console.WriteLine("Failed to query ThrustCurve API");
+                Console.WriteLine("Failed to query ThrustCurve metadata API");
                 Console.WriteLine(err);
-                return new searchresponseResult[] { };
+                return new U { };
             }
             Stream responseBody = await response.Content.ReadAsStreamAsync();
-            return ModelFromRequest<searchresponse>(responseBody).results;
+            return ModelFromRequest<U>(responseBody);
         }
 
         private HttpContent BodyForRequest<T>(T model)
