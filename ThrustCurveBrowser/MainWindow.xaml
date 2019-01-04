@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ThrustCurveBrowser"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="ThrustCurve Browser"
+        Name="mainWindow"
+        Height="450"
+        Width="800">
     <Grid Margin="0" >
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
@@ -22,7 +25,7 @@
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <Label Grid.Row="0" >Manufacturer</Label>
-            <ListBox x:Name="mfrListBox" Grid.Row="1" Margin="5" SelectionChanged="MfrListBox_SelectionChanged"/>
+            <ListBox x:Name="mfrListBox" Grid.Row="1" Margin="5" SelectedValue="{Binding Manufacturer, ElementName=mainWindow}"/>
 
             <Label Grid.Row="0" Grid.Column="1">Diameter</Label>
             <ListBox x:Name="diameterListBox" Grid.Row="1" Grid.Column="1" Margin="5"/>

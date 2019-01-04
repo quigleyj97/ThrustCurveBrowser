@@ -37,7 +37,59 @@ namespace ThrustCurveBrowser
                         });
                     }
                 });
-            apiService.SearchMotors(new Models.searchrequest { manufacturer = "Cesaroni Technology", diameter = 29 })
+            apiService.GetSearchMetadata(new Models.metadatarequest { })
+                .ContinueWith(x =>
+                {
+                    return Dispatcher.InvokeAsync(() =>
+                    {
+                        mfrListBox.ItemsSource = x.Result.manufacturers.Select((i) => i.Value);
+                        diameterListBox.ItemsSource = x.Result.diameters;
+                        typeListBox.ItemsSource = x.Result.types;
+                    });
+                });
+        }
+
+        private string _mfr;
+
+        public string Manufacturer {
+            get { return _mfr; }
+            set {
+                _mfr = value;
+                RunSearch();
+            }
+        }
+
+        private decimal? _diam;
+        public decimal? Diameter {
+            get { return _diam; }
+            set {
+                _diam = value;
+                RunSearch();
+            }
+        }
+
+        private string _type;
+        public string Type {
+            get { return _type; }
+            set {
+                _type = value;
+                RunSearch();
+            }
+        }
+
+        private void RunSearch()
+        {
+            Enum.TryParse(Type, out Models.searchrequestType motorType);
+            Models.searchrequest req = new Models.searchrequest
+            {
+                manufacturer = Manufacturer,
+                type = motorType
+            };
+            if (Diameter != null)
+            {
+                req.diameter = (decimal) Diameter;
+            }
+            apiService.SearchMotors(req)
                 .ContinueWith(res =>
                 {
                     return Dispatcher.InvokeAsync(() =>
@@ -46,16 +98,5 @@ namespace ThrustCurveBrowser
                     });
                 });
         }
-
-        private void MfrListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-    }
-
-    public class MotorDetail
-    {
-        public string Foo { get; set; }
-        public string Bar { get; set; }
     }
 }
