@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Data;
 
 namespace ThrustCurveBrowser
@@ -44,6 +45,11 @@ namespace ThrustCurveBrowser
                         dataGrid.ItemsSource = res.Result;
                     });
                 });
+        }
+
+        private void MfrListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 
