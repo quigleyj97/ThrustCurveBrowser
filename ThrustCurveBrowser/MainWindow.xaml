@@ -25,13 +25,16 @@
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <Label Grid.Row="0" >Manufacturer</Label>
-            <ListBox x:Name="mfrListBox" Grid.Row="1" Margin="5" SelectedValue="{Binding Manufacturer, ElementName=mainWindow}"/>
+            <ListBox x:Name="mfrListBox" Grid.Row="1" Margin="5"
+                     SelectedValue="{Binding Manufacturer, ElementName=mainWindow}" />
 
             <Label Grid.Row="0" Grid.Column="1">Diameter</Label>
-            <ListBox x:Name="diameterListBox" Grid.Row="1" Grid.Column="1" Margin="5"/>
+            <ListBox x:Name="diameterListBox" Grid.Row="1" Grid.Column="1" Margin="5"
+                     SelectedValue="{Binding Diameter, ElementName=mainWindow}" />
             
             <Label Grid.Row="0" Grid.Column="2">Type</Label>
-            <ListBox x:Name="typeListBox" Grid.Row="1" Grid.Column="2" Margin="5"/>
+            <ListBox x:Name="typeListBox" Grid.Row="1" Grid.Column="2" Margin="5"
+                     SelectedValue="{Binding Type, ElementName=mainWindow}" />
 
         </Grid>
         <DataGrid
