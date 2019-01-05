@@ -50,7 +50,6 @@ namespace ThrustCurveBrowser
         }
 
         private string _mfr;
-
         public string Manufacturer {
             get { return _mfr; }
             set {
@@ -79,15 +78,21 @@ namespace ThrustCurveBrowser
 
         private void RunSearch()
         {
-            Enum.TryParse(Type, out Models.searchrequestType motorType);
+            // block until the grid is cleared
+            Dispatcher.Invoke(() => dataGrid.ItemsSource = null);
             Models.searchrequest req = new Models.searchrequest
             {
-                manufacturer = Manufacturer,
-                type = motorType
+                manufacturer = Manufacturer
             };
+            if (Enum.TryParse(Type, out Models.searchrequestType motorType))
+            {
+                req.type = motorType;
+                req.typeSpecified = true;
+            }
             if (Diameter != null)
             {
                 req.diameter = (decimal) Diameter;
+                req.diameterSpecified = true;
             }
             apiService.SearchMotors(req)
                 .ContinueWith(res =>
