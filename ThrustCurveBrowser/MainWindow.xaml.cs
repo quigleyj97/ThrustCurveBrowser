@@ -103,5 +103,22 @@ namespace ThrustCurveBrowser
                     });
                 });
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            switch(button.Name)
+            {
+                case "mfrReset":
+                    Manufacturer = null;
+                    return;
+                case "diamReset":
+                    Diameter = null;
+                    return;
+                case "typeReset":
+                    Type = null;
+                    return;
+            }
+        }
     }
 }

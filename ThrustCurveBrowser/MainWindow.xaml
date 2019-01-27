@@ -24,15 +24,28 @@
                 <RowDefinition Height="25"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" >Manufacturer</Label>
+            <Grid>
+                <Label Content="Manufacturer" Height="25" Grid.Column="0"/>
+                <Button HorizontalAlignment="Right" Grid.Column="1" Margin="5,5,5,0"
+                        Name="mfrReset" Click="Button_Click">Reset</Button>
+            </Grid>
             <ListBox x:Name="mfrListBox" Grid.Row="1" Margin="5"
                      SelectedValue="{Binding Manufacturer, ElementName=mainWindow}" />
 
-            <Label Grid.Row="0" Grid.Column="1">Diameter</Label>
+
+            <Grid Grid.Column="1">
+                <Label Content="Diameter" Height="25" Grid.Column="0"/>
+                <Button HorizontalAlignment="Right" Grid.Column="1" Margin="5,5,5,0"
+                        Name="diamReset" Click="Button_Click">Reset</Button>
+            </Grid>
             <ListBox x:Name="diameterListBox" Grid.Row="1" Grid.Column="1" Margin="5"
                      SelectedValue="{Binding Diameter, ElementName=mainWindow}" />
-            
-            <Label Grid.Row="0" Grid.Column="2">Type</Label>
+
+            <Grid Grid.Column="2">
+                <Label Content="Type" Height="25" Grid.Column="0"/>
+                <Button HorizontalAlignment="Right" Grid.Column="1" Margin="5,5,5,0"
+                        Name="typeReset" Click="Button_Click">Reset</Button>
+            </Grid>
             <ListBox x:Name="typeListBox" Grid.Row="1" Grid.Column="2" Margin="5"
                      SelectedValue="{Binding Type, ElementName=mainWindow}" />
 
